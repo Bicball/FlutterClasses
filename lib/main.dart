@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
+  /*main() {
+    runApp(MaterialApp(home: App()));
+  }*/
 }
 
 class MyApp extends StatelessWidget {
@@ -59,7 +62,25 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: null,
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Alerta!'),
+                              content: Text('Um simples dialog.'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
                       child: Container(
                         width: double.maxFinite,
                         margin: const EdgeInsets.only(left: 4.0,  right: 4.0, bottom: 10.0),
@@ -88,13 +109,35 @@ class MyApp extends StatelessWidget {
                       margin: const EdgeInsets.only(left: 4.0,  right: 4.0, bottom: 10.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10), color: Colors.white12),
-                      child: const Padding(
+                      child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: <Widget>[
                             Text('GitHub', style: TextStyle(fontSize: 16),),
-                            Text('https://github.com/Bicball', style: TextStyle(color: Colors.blue),),
+                            TextButton(
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Alerta!'),
+                                        content: Text('Um simples dialog.'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('OK'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }, child: const Text('https://github.com/Bicball',
+                                style: TextStyle(color: Colors.blue,
+                                    fontSize: 22.0)),
+                            ),
                           ],
                         ),
                       ),
